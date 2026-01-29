@@ -21,6 +21,6 @@ urlpatterns = [
         name="logout"
     ),
 
-    # Incluir URLs do app - Garanta que taxi/urls.py não inclua a si mesmo
+    # Incluir URLs do app - SEM REPETIÇÃO
     path("", include("taxi.urls")),
 ]
