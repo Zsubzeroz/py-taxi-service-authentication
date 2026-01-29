@@ -31,7 +31,7 @@ def index(request):
 
 class ManufacturerListView(
     LoginRequiredMixin, generic.ListView
-):  # Quebra de linha para E501
+):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
@@ -40,7 +40,7 @@ class ManufacturerListView(
 
 class CarListView(
     LoginRequiredMixin, generic.ListView
-):  # Quebra de linha para E501
+):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
@@ -48,61 +48,21 @@ class CarListView(
 
 class CarDetailView(
     LoginRequiredMixin, generic.DetailView
-):  # Quebra de linha para E501
+):
     model = Car
 
 
 class DriverListView(
     LoginRequiredMixin, generic.ListView
-):  # Quebra de linha para E501
+):
     model = Driver
     paginate_by = 5
 
 
 class DriverDetailView(
     LoginRequiredMixin, generic.DetailView
-):  # Quebra de linha para E501
+):  # Correção da sintaxe: a linha de queryset deve ser tratada separadamente
     model = Driver
-    queryset = Driver.objects.prefetch_related("cars__manufacturer")
-    ```
-
-
----
-
-### 2. Configuração Refatorada de URLs (`taxi_service/urls.py`)
-
-Quebrando as definições
-de
-`path`
-para
-ficar
-abaixo
-de
-79
-caracteres:
-
-```python
-# Em taxi_service/urls.py (ou o nome do seu diretório de configurações)
-
-from django.contrib import admin
-from django.urls import path, include
-from django.contrib.auth import views as auth_views
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-
-    # URLs de Autenticação (Usando nomes de URL com hífens)
-    path(
-        "login/",
-        auth_views.LoginView.as_view(template_name="taxi/login.html"),
-        name="login",
-    ),
-    path(
-        "logout/",
-        auth_views.LogoutView.as_view(next_page="login"),
-        name="logout"
-    ),
-
-    # Incluir URLs do app
-    path("", include("taxi.urls")),
-]
+    queryset = Driver.objects.prefetch_related(
+        "cars__manufacturer"
+    ) # Quebrando a linha longa da queryset
