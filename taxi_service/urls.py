@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path("admin/", admin.site.urls),
 
-    # URLs de Autenticação (Usando nomes de URL com hífens)
+    # URLs de Autenticação
     path(
         "login/",
         auth_views.LoginView.as_view(
@@ -21,6 +21,6 @@ urlpatterns = [
         name="logout"
     ),
 
-    # Incluir URLs do app
+    # Incluir URLs do app - Garanta que taxi/urls.py não inclua a si mesmo
     path("", include("taxi.urls")),
 ]
