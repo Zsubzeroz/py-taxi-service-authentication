@@ -1,8 +1,7 @@
 from django.urls import path
 from . import views
 
-# Nota: Como as views são protegidas com LoginRequiredMixin,
-# você não precisa de @login_required aqui, exceto para a 'index' (FBV).
+# (Não há necessidade de comentários inline aqui, removidos para passar no flake8)
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -14,5 +13,5 @@ urlpatterns = [
         "manufacturers/",
         views.ManufacturerListView.as_view(),
         name="manufacturers"
-    ), # Linha quebrada para corrigir E501
+    ),
 ]
