@@ -14,5 +14,5 @@ urlpatterns = [
         "manufacturers/",
         views.ManufacturerListView.as_view(),
         name="manufacturers"
-    ),
+    ), # Linha quebrada para corrigir E501
 ]
