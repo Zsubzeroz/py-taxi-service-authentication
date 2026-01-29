@@ -1,5 +1,3 @@
-# Em taxi_service/urls.py (ou o nome do seu diretório de configurações)
-
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
@@ -10,7 +8,9 @@ urlpatterns = [
     # URLs de Autenticação (Usando nomes de URL com hífens)
     path(
         "login/",
-        auth_views.LoginView.as_view(template_name="taxi/login.html"),
+        auth_views.LoginView.as_view(
+            template_name="taxi/login.html"
+        ),
         name="login",
     ),
     path(

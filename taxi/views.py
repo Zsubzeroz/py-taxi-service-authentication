@@ -61,8 +61,8 @@ class DriverListView(
 
 class DriverDetailView(
     LoginRequiredMixin, generic.DetailView
-):  # Correção da sintaxe: a linha de queryset deve ser tratada separadamente
+):
     model = Driver
     queryset = Driver.objects.prefetch_related(
         "cars__manufacturer"
-    ) # Quebrando a linha longa da queryset
+    )
